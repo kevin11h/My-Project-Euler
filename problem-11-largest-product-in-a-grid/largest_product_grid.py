@@ -57,21 +57,15 @@ def find_largest_product_of_n_adjacent_digits_from_grid_files(n, directory):
             for y in range(n):
                 row = subgrid[y]
                 max_product = max(max_product, prod(row))
-                print row
 
                 column = subgrid_transposed[y]
                 max_product = max(max_product, prod(column))
-                print column
 
             left_corner_diagonal = [subgrid[i][i] for i in range(n)]
             max_product = max(max_product, prod(left_corner_diagonal))
 
             right_corner_diagonal = [subgrid[i][n-1-i] for i in range(n)]
             max_product = max(max_product, prod(right_corner_diagonal))
-
-            print left_corner_diagonal, right_corner_diagonal
-
-            exit(1)
 
         solutions.append(max_product)
 
