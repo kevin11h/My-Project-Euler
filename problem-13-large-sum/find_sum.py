@@ -18,6 +18,7 @@ for digit in range(len(numbers[0])):
     least_significant_digit = radix_sum % 10
     carry = radix_sum / 10
     summation.append(least_significant_digit)
+    addends = []
 
 leftover = carry
 summation.extend([int(d) for d in list(str(leftover))][::-1])
