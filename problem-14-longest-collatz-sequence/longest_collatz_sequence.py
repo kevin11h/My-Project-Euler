@@ -10,7 +10,8 @@ def collatz_sequence(n):
 
         yield n
 
-def longest_collatz_sequence_under_x(x):
+def number_with_longest_collatz_sequence_under_x(x):
+    target_number = None
     longest_sequence = 0
 
     for i in range(x - 1, 0, -1):
@@ -19,11 +20,12 @@ def longest_collatz_sequence_under_x(x):
         for _ in collatz_sequence(i):
             local_length += 1
 
-        longest_sequence = max(longest_sequence, local_length)
+        if local_length > longest_sequence:
+            longest_sequence = local_length
+            target_number = i
 
-    return longest_sequence
-    
+    return target_number
 
 ONE_MILLION = 10**6
-print longest_collatz_sequence_under_x(ONE_MILLION)
+print number_with_longest_collatz_sequence_under_x(ONE_MILLION)
 
