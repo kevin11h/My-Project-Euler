@@ -19,9 +19,6 @@ def series_file_to_int_list(fname):
 
     return map(int, int_list)
 
-def largest_product_of_n_consecutive_digits(n, digits): 
-    return
-          
 def find_largest_product_n_digit_series(n, directory):
     fnames = get_series_file_names_from_dir(directory)
     solutions = []
