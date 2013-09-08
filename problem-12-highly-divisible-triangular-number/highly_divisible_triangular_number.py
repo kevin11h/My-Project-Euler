@@ -1,8 +1,9 @@
 from math import sqrt
 from sys import argv
 
-# assert n > 0
 def get_nth_triangular_number(n):
+    assert n > 0
+
     triangular_number = 0
 
     for i in range(1, n+1):
@@ -10,8 +11,9 @@ def get_nth_triangular_number(n):
 
     return triangular_number
 
-# assert n != 0
 def num_divisors(n):
+    assert n != 0
+
     divisors_count = 1
 
     if n == 1:
@@ -28,8 +30,8 @@ def num_divisors(n):
 
     return divisors_count
     
-# assert d >= 0
 def triangular_number_with_over_d_number_divisors(d):
+    assert d >= 0
 
     if d == 0:
         return get_nth_triangular_number(1)
