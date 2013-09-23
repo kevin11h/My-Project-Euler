@@ -1,6 +1,5 @@
 from sys import argv
-import re
-
+import re 
 MIN_VAL = 1
 MAX_VAL = 1000
 
@@ -26,8 +25,8 @@ some_special_numbers_in_english = {
     50 : "fifty"
 }
 
-NUMBER_RE = re.compile(r"(?:^.*?)(?P<Thousands>\d{1,3})??(?P<Hundreds>\d{1,3}$)")
-HYPHENS_AND_SPACES_RE = re.compile(r"[-\s]")
+NUMBER_RE = re.compile(r"(?:^.*?)(?P<Thousands>\d{0,3}?)((?P<Hundreds>\d{1,3})$)")
+HYPHENS_OR_SPACES_RE = re.compile(r"[-\s]")
 
 def number_to_english(n):
     matches = NUMBER_RE.match(str(n))
@@ -65,11 +64,12 @@ def three_digits_to_english(n):
         else:
             english += " and "
 
-    if tens_and_ones in some_special_numbers_in_english:
+    if tens_and_ones in some_special_numbers_in_english and tens_and_ones != 0:
         english += some_special_numbers_in_english[tens_and_ones]
     else:
         if tens == "0":
-            english += some_special_numbers_in_english[int(ones)]
+            if ones != "0":
+                english += some_special_numbers_in_english[int(ones)]
         elif tens == "1":
             english += some_special_numbers_in_english[int(ones)] + "teen"
         elif tens in map(str, range(6,10)):
@@ -91,10 +91,10 @@ if __name__ == "__main__":
         english = number_to_english(i)
         letter_count += len(english)
 
-        number_of_hyphens_and_spaces = len(HYPHENS_AND_SPACES_RE.findall(english))
+        number_of_hyphens_and_spaces = len(HYPHENS_OR_SPACES_RE.findall(english))
 
         if number_of_hyphens_and_spaces:
-            letter_count -= len(HYPHENS_AND_SPACES_RE.findall(english))
+            letter_count -= len(HYPHENS_OR_SPACES_RE.findall(english))
 
     print letter_count
 
