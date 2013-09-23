@@ -72,6 +72,7 @@ def three_digits_to_english(n):
                 english += some_special_numbers_in_english[int(ones)]
         elif tens == "1":
             english += some_special_numbers_in_english[int(ones)] + "teen"
+            return english
         elif tens in map(str, range(6,10)):
             english += some_special_numbers_in_english[int(tens)] + "ty"
         else:
@@ -99,5 +100,7 @@ if __name__ == "__main__":
         if number_of_hyphens_and_spaces:
             letter_count -= len(HYPHENS_OR_SPACES_RE.findall(english))
 
+        print english, len(english) - number_of_hyphens_and_spaces
+ 
     print letter_count
 
