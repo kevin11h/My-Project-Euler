@@ -72,13 +72,12 @@ def three_digits_to_english(n):
                 english += some_special_numbers_in_english[int(ones)]
         elif tens == "1":
             english += some_special_numbers_in_english[int(ones)] + "teen"
-            return english
         elif tens in map(str, range(6,10)):
             english += some_special_numbers_in_english[int(tens)] + "ty"
         else:
             english += some_special_numbers_in_english[int(tens + "0")]
 
-        if ones != "0":
+        if tens != "1" and ones != "0":
             if tens != "0":
                 english += "-"
 
