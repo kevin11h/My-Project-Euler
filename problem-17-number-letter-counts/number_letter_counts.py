@@ -1,8 +1,8 @@
 from sys import argv
 import re
 
-MIN_VAL = 0
-MAX_VAL = 9999
+MIN_VAL = 1
+MAX_VAL = 1000
 
 some_special_numbers_in_english = {
     0 : "zero",
